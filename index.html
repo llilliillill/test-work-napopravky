@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тестовое задание (задачи)</title>
+</head>
+<body>
+    <script>
+        // 1) Преобразуем строку в массив строк fruitsArray
+        // 2) Создаем функцию getFrutsAndQuantity которая будет возвращать результирующий обьект
+        // 3) В цикле for in проходим по всем элементам массива
+        // 4) Внутри цикла for in с помощю метода find ищем в массиве строк совпадение с элементом цикла
+        // 5) В условии, если элемент массива строк равен элементу цикла, 
+        // то увеличиваем переменную quantity и добавляем в обьект свойство с именем фрукта и значение его количества
+        // 6) Вызываем функцию getFrutsAndQuantity и помещаем результат ее выполнения в переменную result
+        // 7) Выводим содержимое обьекта в консоль
+
+        const string = 'apple banana orange apple'
+
+        const fruitsArray = string.match(/\w+/g)
+        
+        const getFrutsAndQuantity = () => {
+            let result = {}
+
+            for (let key in fruitsArray) {
+                const fruit = fruitsArray[key]
+                let quantity = 0
+
+                fruitsArray.find(item => { 
+                    if (item === fruit) {
+                        quantity += 1
+                        result[fruit] = quantity
+                    }
+                })
+            }
+
+            return result
+        }
+
+        const result = getFrutsAndQuantity()
+
+        for(let key in result){
+            console.log(`${ key } - ${ result[key] }`)
+        }
+    </script>
+</body>
+</html>
